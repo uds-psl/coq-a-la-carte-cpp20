@@ -1,0 +1,37 @@
+-Q ../metacoq/template-coq/theories MetaCoq.Template
+-I ../metacoq/template-coq/src
+-Q ../metacoq/checker/theories MetaCoq.Checker
+-Q . ""
+-arg -w -arg -non-reversible-notation
+COQDOCFLAGS = "--charset utf-8 -s --parse-comments --with-header ./website/resources/header.html --with-footer ./website/resources/footer.html --index indexpage"
+
+axioms.v
+fintype.v
+
+header_extensible.v
+header_metacoq.v
+tactics.v
+
+Counting/section2_count.v
+Counting/section2_count_metacoq.v
+
+TypeSafetyAgda/extensible_array.v
+TypeSafetyAgda/TypeSafety.v
+
+GDTC/features.v
+GDTC/GDTC.v
+GDTC/miniML.v
+GDTC/miniML_nofix.v
+GDTC/miniML_results.v
+GDTC/miniML_nofix_results.v
+
+SN/axioms.v
+SN/unscoped.v
+SN/defs.v
+SN/expressions.v
+SN/sn_var.v
+SN/sn_lam.v
+SN/sn_bool.v
+SN/sn_arith.v
+SN/sn.v
+

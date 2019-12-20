@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link href="coqdoc.css" rel="stylesheet" type="text/css" />
+<link href="coqdocjs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="config.js"></script>
+<script type="text/javascript" src="coqdocjs.js"></script>
+</head>
+
+<body onload="document.getElementById('content').focus()">
+  <div id="header">
+    <span class="left">
+      <span class="modulename"> <script> document.write(document.title) </script> </span>
+    </span>
+
+    <span class="button" id="toggle-proofs"></span>
+
+    <span class="right">
+      <a href="../">Project Page</a>
+      <a href="./indexpage.html"> Index </a>
+      <a href="./toc.html"> Table of Contents </a>
+    </span>
+</div>
+    <div id="content" tabindex="-1" onblur="document.getElementById('content').focus()">
+    <div id="main">
+<div class="code">
+<span class="id" title="keyword">Require</span> <span class="id" title="keyword">Import</span> <a class="idref" href="header_metacoq.html#"><span class="id" title="library">header_metacoq</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Set Implicit Arguments</span>.<br/>
+
+<br/>
+</div>
+
+<div class="doc">
+<a name="lab13"></a><h1 class="section">Case Study 2: Monotonicty and Type Safety for big-step mini-ML</h1>
+
+<div class="paragraph"> </div>
+
+<a name="lab14"></a><h2 class="section">Autosubst 2 generated code</h2>
+
+</div>
+<div class="code">
+
+<br/>
+<span class="id" title="keyword">Notation</span> <a name="included"><span class="id" title="abbreviation">included</span></a> <span class="id" title="var">F</span> <span class="id" title="var">T</span> := (<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> (<span class="id" title="var">F</span> <span class="id" title="var">T</span>) <span class="id" title="var">T</span>)%<span class="id" title="keyword">type</span>.<br/>
+<span class="id" title="keyword">Notation</span> <a name="f0c78762ef27ce0a8d11f35bdcf2583a"><span class="id" title="notation">&quot;</span></a>s .: T" := (<span class="id" title="keyword">fun</span> <span class="id" title="var">n</span> =&gt; <span class="id" title="keyword">match</span> <a class="idref" href="GDTC.features.html#n"><span class="id" title="variable">n</span></a> <span class="id" title="keyword">with</span> 0 =&gt; <span class="id" title="var">s</span> | <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Datatypes.html#S"><span class="id" title="constructor">S</span></a> <span class="id" title="var">n</span> =&gt; <span class="id" title="var">T</span> <a class="idref" href="GDTC.features.html#n"><span class="id" title="variable">n</span></a> <span class="id" title="keyword">end</span>) (<span class="id" title="tactic">right</span> <span class="id" title="keyword">associativity</span>, <span class="id" title="tactic">at</span> <span class="id" title="keyword">level</span> 70).<br/>
+
+<br/>
+<span class="id" title="keyword">Section</span> <a name="Lambdas"><span class="id" title="section">Lambdas</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="Lambdas.T"><span class="id" title="variable">T</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Inductive</span> <a name="ty_lam"><span class="id" title="inductive">ty_lam</span></a> := <a name="Arr"><span class="id" title="constructor">Arr</span></a> : <a class="idref" href="GDTC.features.html#Lambdas.T"><span class="id" title="variable">T</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#Lambdas.T"><span class="id" title="variable">T</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#ty_lam"><span class="id" title="inductive">ty_lam</span></a>.<br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#ty_lam"><span class="id" title="inductive">ty_lam</span></a> <a class="idref" href="GDTC.features.html#Lambdas.T"><span class="id" title="variable">T</span></a>}.<br/>
+<span class="id" title="keyword">Definition</span> <a name="In_ty_lam"><span class="id" title="definition">In_ty_lam</span></a> (<span class="id" title="var">t</span> : <a class="idref" href="GDTC.features.html#Lambdas.T"><span class="id" title="variable">T</span></a>) <span class="id" title="var">t'</span> : <span class="id" title="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="GDTC.features.html#t'"><span class="id" title="variable">t'</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="GDTC.features.html#Arr"><span class="id" title="constructor">Arr</span></a> <span class="id" title="var">t1</span> <span class="id" title="var">t2</span> =&gt; <a class="idref" href="GDTC.features.html#t"><span class="id" title="variable">t</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="var">t1</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#f031fe1957c4a4a8e217aa46af2b4e25"><span class="id" title="notation">\/</span></a> <a class="idref" href="GDTC.features.html#t"><span class="id" title="variable">t</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="var">t2</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="Lambdas.E"><span class="id" title="variable">E</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Inductive</span> <a name="exp_lam"><span class="id" title="inductive">exp_lam</span></a> := <a name="lam"><span class="id" title="constructor">lam</span></a> : <a class="idref" href="GDTC.features.html#Lambdas.T"><span class="id" title="variable">T</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#exp_lam"><span class="id" title="inductive">exp_lam</span></a> | <a name="app"><span class="id" title="constructor">app</span></a> : <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#exp_lam"><span class="id" title="inductive">exp_lam</span></a> | <a name="var"><span class="id" title="constructor">var</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#exp_lam"><span class="id" title="inductive">exp_lam</span></a>.<br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#exp_lam"><span class="id" title="inductive">exp_lam</span></a> <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a>}.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="In_lam"><span class="id" title="definition">In_lam</span></a> (<span class="id" title="var">x</span> : <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a>) (<span class="id" title="var">s</span> : <a class="idref" href="GDTC.features.html#exp_lam"><span class="id" title="inductive">exp_lam</span></a>) :  <span class="id" title="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="GDTC.features.html#lam"><span class="id" title="constructor">lam</span></a> <span class="id" title="var">ty</span> <span class="id" title="var">s</span> =&gt; <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a><br/>
+&nbsp;&nbsp;| <a class="idref" href="GDTC.features.html#app"><span class="id" title="constructor">app</span></a> <span class="id" title="var">s</span> <span class="id" title="var">t</span> =&gt; <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#f031fe1957c4a4a8e217aa46af2b4e25"><span class="id" title="notation">\/</span></a> <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="var">t</span><br/>
+&nbsp;&nbsp;| <span class="id" title="var">_</span> =&gt; <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#False"><span class="id" title="inductive">False</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+<span class="id" title="keyword">Global Instance</span> <a name="In_ty_lam'"><span class="id" title="instance">In_ty_lam'</span></a> : <a class="idref" href="header_metacoq.html#InRelC"><span class="id" title="class">InRelC</span></a> <span class="id" title="var">_</span> := <a class="idref" href="header_metacoq.html#Build_InRelC"><span class="id" title="constructor">Build_InRelC</span></a> <a class="idref" href="GDTC.features.html#In_ty_lam"><span class="id" title="definition">In_ty_lam</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="Lam"><span class="id" title="definition">Lam</span></a> (<span class="id" title="var">ty</span> : <a class="idref" href="GDTC.features.html#Lambdas.T"><span class="id" title="variable">T</span></a>) (<span class="id" title="var">s</span> : <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a>) : <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a> :=<br/>
+&nbsp;&nbsp;<a class="idref" href="header_extensible.html#inj"><span class="id" title="abbreviation">inj</span></a> (<a class="idref" href="GDTC.features.html#lam"><span class="id" title="constructor">lam</span></a> <a class="idref" href="GDTC.features.html#ty"><span class="id" title="variable">ty</span></a> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="App"><span class="id" title="definition">App</span></a> (<span class="id" title="var">s</span> <span class="id" title="var">t</span>: <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a>) : <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a> :=<br/>
+&nbsp;&nbsp;<a class="idref" href="header_extensible.html#inj"><span class="id" title="abbreviation">inj</span></a> (<a class="idref" href="GDTC.features.html#app"><span class="id" title="constructor">app</span></a> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="GDTC.features.html#t"><span class="id" title="variable">t</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="Var"><span class="id" title="definition">Var</span></a> (<span class="id" title="var">x</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) : <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a> :=<br/>
+&nbsp;&nbsp;<a class="idref" href="header_extensible.html#inj"><span class="id" title="abbreviation">inj</span></a> (<a class="idref" href="GDTC.features.html#var"><span class="id" title="constructor">var</span></a> <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="Lambdas.V"><span class="id" title="variable">V</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Inductive</span> <a name="value_lam"><span class="id" title="inductive">value_lam</span></a>  :=<br/>
+| <a name="Clos"><span class="id" title="constructor">Clos</span></a> : <a class="idref" href="GDTC.features.html#Lambdas.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">(</span></a><a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#Lambdas.V"><span class="id" title="variable">V</span></a><a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">)</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#value_lam"><span class="id" title="inductive">value_lam</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="GDTC.features.html#Lambdas"><span class="id" title="section">Lambdas</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Section</span> <a name="Booleans"><span class="id" title="section">Booleans</span></a>.<br/>
+
+<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Variable</span> <a name="Booleans.T"><span class="id" title="variable">T</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Inductive</span> <a name="ty_bool"><span class="id" title="inductive">ty_bool</span></a> := <a name="Bool"><span class="id" title="constructor">Bool</span></a> : <a class="idref" href="GDTC.features.html#ty_bool"><span class="id" title="inductive">ty_bool</span></a>.<br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#ty_bool"><span class="id" title="inductive">ty_bool</span></a> <a class="idref" href="GDTC.features.html#Booleans.T"><span class="id" title="variable">T</span></a>}.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="In_ty_bool"><span class="id" title="definition">In_ty_bool</span></a> (<span class="id" title="var">x</span> : <a class="idref" href="GDTC.features.html#Booleans.T"><span class="id" title="variable">T</span></a>) (<span class="id" title="var">y</span> : <a class="idref" href="GDTC.features.html#ty_bool"><span class="id" title="inductive">ty_bool</span></a>) := <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#False"><span class="id" title="inductive">False</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a name="subterm_ty_bool"><span class="id" title="instance">subterm_ty_bool</span></a> : <a class="idref" href="header_metacoq.html#InRelC"><span class="id" title="class">InRelC</span></a> <span class="id" title="var">_</span> := <a class="idref" href="header_metacoq.html#Build_InRelC"><span class="id" title="constructor">Build_InRelC</span></a> <a class="idref" href="GDTC.features.html#In_ty_bool"><span class="id" title="definition">In_ty_bool</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="Booleans.E"><span class="id" title="variable">E</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Inductive</span> <a name="exp_bool"><span class="id" title="inductive">exp_bool</span></a>:= <a name="constBool"><span class="id" title="constructor">constBool</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Datatypes.html#bool"><span class="id" title="inductive">bool</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#exp_bool"><span class="id" title="inductive">exp_bool</span></a> | <a name="If"><span class="id" title="constructor">If</span></a> : <a class="idref" href="GDTC.features.html#Booleans.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#Booleans.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#Booleans.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#exp_bool"><span class="id" title="inductive">exp_bool</span></a>.<br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#exp_bool"><span class="id" title="inductive">exp_bool</span></a> <a class="idref" href="GDTC.features.html#Booleans.E"><span class="id" title="variable">E</span></a>}.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="In_bool"><span class="id" title="definition">In_bool</span></a> (<span class="id" title="var">x</span> : <a class="idref" href="GDTC.features.html#Booleans.E"><span class="id" title="variable">E</span></a>) (<span class="id" title="var">s</span>:  <a class="idref" href="GDTC.features.html#exp_bool"><span class="id" title="inductive">exp_bool</span></a>) :  <span class="id" title="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="GDTC.features.html#If"><span class="id" title="constructor">If</span></a> <span class="id" title="var">s</span> <span class="id" title="var">t</span> <span class="id" title="var">u</span> =&gt; <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#f031fe1957c4a4a8e217aa46af2b4e25"><span class="id" title="notation">\/</span></a> <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="var">t</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#f031fe1957c4a4a8e217aa46af2b4e25"><span class="id" title="notation">\/</span></a> <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="var">u</span><br/>
+&nbsp;&nbsp;| <span class="id" title="var">_</span> =&gt; <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#False"><span class="id" title="inductive">False</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="Booleans.V"><span class="id" title="variable">V</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Inductive</span> <a name="value_bool"><span class="id" title="inductive">value_bool</span></a> :=<br/>
+| <a name="Boolean"><span class="id" title="constructor">Boolean</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Datatypes.html#bool"><span class="id" title="inductive">bool</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#value_bool"><span class="id" title="inductive">value_bool</span></a>.<br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#value_bool"><span class="id" title="inductive">value_bool</span></a> <a class="idref" href="GDTC.features.html#Booleans.V"><span class="id" title="variable">V</span></a>}.<br/>
+
+<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="GDTC.features.html#Booleans"><span class="id" title="section">Booleans</span></a>.<br/>
+
+<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="GDTC.features.html#subterm_ty_bool"><span class="id" title="instance">subterm_ty_bool</span></a> {<span class="id" title="var">_</span>}.<br/>
+
+<br/>
+<span class="id" title="keyword">Section</span> <a name="Arith"><span class="id" title="section">Arith</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Variable</span> <a name="Arith.E"><span class="id" title="variable">E</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Inductive</span> <a name="exp_arith"><span class="id" title="inductive">exp_arith</span></a> := <a name="Num"><span class="id" title="constructor">Num</span></a> (<span class="id" title="var">n</span> : <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a>) | <a name="Plus"><span class="id" title="constructor">Plus</span></a> : <a class="idref" href="GDTC.features.html#Arith.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#Arith.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#exp_arith"><span class="id" title="inductive">exp_arith</span></a>.<br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#exp_arith"><span class="id" title="inductive">exp_arith</span></a> <a class="idref" href="GDTC.features.html#Arith.E"><span class="id" title="variable">E</span></a>}.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="In_arith"><span class="id" title="definition">In_arith</span></a> (<span class="id" title="var">x</span> : <a class="idref" href="GDTC.features.html#Arith.E"><span class="id" title="variable">E</span></a>) (<span class="id" title="var">s</span>:  <a class="idref" href="GDTC.features.html#exp_arith"><span class="id" title="inductive">exp_arith</span></a>) :  <span class="id" title="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="GDTC.features.html#Plus"><span class="id" title="constructor">Plus</span></a> <span class="id" title="var">s</span> <span class="id" title="var">t</span> =&gt; <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#f031fe1957c4a4a8e217aa46af2b4e25"><span class="id" title="notation">\/</span></a> <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="var">t</span><br/>
+&nbsp;&nbsp;| <span class="id" title="var">_</span> =&gt; <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#False"><span class="id" title="inductive">False</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="Arith.V"><span class="id" title="variable">V</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Inductive</span> <a name="value_arith"><span class="id" title="inductive">value_arith</span></a> :=<br/>
+| <a name="Number"><span class="id" title="constructor">Number</span></a> : <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#value_arith"><span class="id" title="inductive">value_arith</span></a>.<br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#value_arith"><span class="id" title="inductive">value_arith</span></a> <a class="idref" href="GDTC.features.html#Arith.V"><span class="id" title="variable">V</span></a>}.<br/>
+
+<br/>
+<span class="id" title="keyword">Inductive</span> <a name="ty_arith"><span class="id" title="inductive">ty_arith</span></a> := <a name="Nat"><span class="id" title="constructor">Nat</span></a> : <a class="idref" href="GDTC.features.html#ty_arith"><span class="id" title="inductive">ty_arith</span></a>.<br/>
+<span class="id" title="keyword">Variable</span> <a name="Arith.T"><span class="id" title="variable">T</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#ty_arith"><span class="id" title="inductive">ty_arith</span></a> <a class="idref" href="GDTC.features.html#Arith.T"><span class="id" title="variable">T</span></a>}.<br/>
+<span class="id" title="keyword">Definition</span> <a name="In_ty_arith"><span class="id" title="definition">In_ty_arith</span></a> (<span class="id" title="var">x</span> : <a class="idref" href="GDTC.features.html#Arith.T"><span class="id" title="variable">T</span></a>) (<span class="id" title="var">y</span> : <a class="idref" href="GDTC.features.html#ty_arith"><span class="id" title="inductive">ty_arith</span></a>) := <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#False"><span class="id" title="inductive">False</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a name="subterm_ty_arith"><span class="id" title="instance">subterm_ty_arith</span></a> : <a class="idref" href="header_metacoq.html#InRelC"><span class="id" title="class">InRelC</span></a> <span class="id" title="var">_</span> := <a class="idref" href="header_metacoq.html#Build_InRelC"><span class="id" title="constructor">Build_InRelC</span></a> <a class="idref" href="GDTC.features.html#In_ty_arith"><span class="id" title="definition">In_ty_arith</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="GDTC.features.html#Arith"><span class="id" title="section">Arith</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Section</span> <a name="NatCase"><span class="id" title="section">NatCase</span></a>.<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">Variable</span> <a name="NatCase.E"><span class="id" title="variable">E</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Inductive</span> <a name="exp_case"><span class="id" title="inductive">exp_case</span></a> := <a name="Case"><span class="id" title="constructor">Case</span></a> : <a class="idref" href="GDTC.features.html#NatCase.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#NatCase.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#NatCase.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#exp_case"><span class="id" title="inductive">exp_case</span></a>.<br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#True"><span class="id" title="inductive">True</span></a>}. <span class="comment">(*&nbsp;FIXME:&nbsp;removing&nbsp;this&nbsp;changes&nbsp;names&nbsp;*)</span><br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#exp_case"><span class="id" title="inductive">exp_case</span></a> <a class="idref" href="GDTC.features.html#NatCase.E"><span class="id" title="variable">E</span></a>}.<br/>
+
+<br/>
+<span class="id" title="keyword">Definition</span> <a name="In_case"><span class="id" title="definition">In_case</span></a> (<span class="id" title="var">x</span> : <a class="idref" href="GDTC.features.html#NatCase.E"><span class="id" title="variable">E</span></a>) (<span class="id" title="var">s</span>:  <a class="idref" href="GDTC.features.html#exp_case"><span class="id" title="inductive">exp_case</span></a>) :  <span class="id" title="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="GDTC.features.html#Case"><span class="id" title="constructor">Case</span></a> <span class="id" title="var">s</span> <span class="id" title="var">t</span> <span class="id" title="var">u</span> =&gt; <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#f031fe1957c4a4a8e217aa46af2b4e25"><span class="id" title="notation">\/</span></a> <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="var">t</span> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#f031fe1957c4a4a8e217aa46af2b4e25"><span class="id" title="notation">\/</span></a> <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <span class="id" title="var">u</span><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="NatCase.T"><span class="id" title="variable">T</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Context</span> { <span class="id" title="var">HR</span> : <a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#ty_arith"><span class="id" title="inductive">ty_arith</span></a> <a class="idref" href="GDTC.features.html#NatCase.T"><span class="id" title="variable">T</span></a>}. <span class="comment">(*&nbsp;TODO:&nbsp;How&nbsp;to&nbsp;signal&nbsp;this&nbsp;in&nbsp;autosubst?&nbsp;The&nbsp;nat_case&nbsp;feature&nbsp;depends&nbsp;on&nbsp;the&nbsp;arith&nbsp;feature,&nbsp;at&nbsp;least&nbsp;for&nbsp;types.&nbsp;&nbsp;*)</span><br/>
+
+<br/>
+<span class="id" title="keyword">Global Instance</span> <a name="subterm_ty_arith'"><span class="id" title="instance">subterm_ty_arith'</span></a> : <a class="idref" href="header_metacoq.html#InRelC"><span class="id" title="class">InRelC</span></a> <span class="id" title="var">_</span> := <a class="idref" href="header_metacoq.html#Build_InRelC"><span class="id" title="constructor">Build_InRelC</span></a> (@<a class="idref" href="GDTC.features.html#In_ty_arith"><span class="id" title="definition">In_ty_arith</span></a> <a class="idref" href="GDTC.features.html#NatCase.T"><span class="id" title="variable">T</span></a>).<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="NatCase.V"><span class="id" title="variable">V</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+<span class="id" title="keyword">Context</span> `{<a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#value_arith"><span class="id" title="inductive">value_arith</span></a> <a class="idref" href="GDTC.features.html#NatCase.V"><span class="id" title="variable">V</span></a>}.<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="GDTC.features.html#NatCase"><span class="id" title="section">NatCase</span></a>.<br/>
+<span class="id" title="var">Arguments</span> <a class="idref" href="GDTC.features.html#subterm_ty_arith"><span class="id" title="instance">subterm_ty_arith</span></a> {<span class="id" title="var">_</span>}.<br/>
+
+<br/>
+<span class="id" title="keyword">Section</span> <a name="Fix"><span class="id" title="section">Fix</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="Fix.T"><span class="id" title="variable">T</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="Fix.E"><span class="id" title="variable">E</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Inductive</span> <a name="exp_fix"><span class="id" title="inductive">exp_fix</span></a> := <a name="fixp"><span class="id" title="constructor">fixp</span></a> : <a class="idref" href="GDTC.features.html#Fix.T"><span class="id" title="variable">T</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#Fix.T"><span class="id" title="variable">T</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#Fix.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#exp_fix"><span class="id" title="inductive">exp_fix</span></a>.<br/>
+
+<br/>
+<span class="id" title="keyword">Context</span> {<span class="id" title="var">ret_lam</span> : <a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> (<a class="idref" href="GDTC.features.html#exp_lam"><span class="id" title="inductive">exp_lam</span></a> <a class="idref" href="GDTC.features.html#Fix.T"><span class="id" title="variable">T</span></a> <a class="idref" href="GDTC.features.html#Fix.E"><span class="id" title="variable">E</span></a>) <a class="idref" href="GDTC.features.html#Fix.E"><span class="id" title="variable">E</span></a>}.<br/>
+<span class="id" title="keyword">Context</span> {<span class="id" title="var">ret_fix</span> : <a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> <a class="idref" href="GDTC.features.html#exp_fix"><span class="id" title="inductive">exp_fix</span></a> <a class="idref" href="GDTC.features.html#Fix.E"><span class="id" title="variable">E</span></a>}.<br/>
+
+<br/>
+<span class="comment">(*&nbsp;Version&nbsp;to&nbsp;use&nbsp;a&nbsp;general&nbsp;induction&nbsp;principle.&nbsp;*)</span><br/>
+<span class="id" title="keyword">Definition</span> <a name="In_fix"><span class="id" title="definition">In_fix</span></a> (<span class="id" title="var">x</span> : <a class="idref" href="GDTC.features.html#Fix.E"><span class="id" title="variable">E</span></a>) (<span class="id" title="var">s</span> : <a class="idref" href="GDTC.features.html#exp_fix"><span class="id" title="inductive">exp_fix</span></a>) :  <span class="id" title="keyword">Prop</span> :=<br/>
+&nbsp;&nbsp;<span class="id" title="keyword">match</span> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a> <span class="id" title="keyword">with</span><br/>
+&nbsp;&nbsp;| <a class="idref" href="GDTC.features.html#fixp"><span class="id" title="constructor">fixp</span></a> <span class="id" title="var">ty</span> <span class="id" title="var">_</span> <span class="id" title="var">s</span> =&gt; <a class="idref" href="GDTC.features.html#x"><span class="id" title="variable">x</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#6cd0f7b28b6092304087c7049437bb1a"><span class="id" title="notation">=</span></a> <a class="idref" href="GDTC.features.html#s"><span class="id" title="variable">s</span></a><br/>
+&nbsp;&nbsp;<span class="id" title="keyword">end</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Variable</span> <a name="Fix.V"><span class="id" title="variable">V</span></a> : <span class="id" title="keyword">Type</span>.<br/>
+
+<br/>
+<span class="id" title="keyword">Context</span> {<span class="id" title="var">ret_lam_value</span> : <a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> (<a class="idref" href="GDTC.features.html#value_lam"><span class="id" title="inductive">value_lam</span></a> <a class="idref" href="GDTC.features.html#Fix.E"><span class="id" title="variable">E</span></a> <a class="idref" href="GDTC.features.html#Fix.V"><span class="id" title="variable">V</span></a>) <a class="idref" href="GDTC.features.html#Fix.V"><span class="id" title="variable">V</span></a>}.<br/>
+
+<br/>
+<span class="id" title="keyword">Inductive</span> <a name="value_fix"><span class="id" title="inductive">value_fix</span></a> := <a name="RClos"><span class="id" title="constructor">RClos</span></a> : <a class="idref" href="GDTC.features.html#Fix.E"><span class="id" title="variable">E</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">(</span></a><a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Datatypes.html#nat"><span class="id" title="inductive">nat</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#Fix.V"><span class="id" title="variable">V</span></a><a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">)</span></a> <a class="idref" href="http://coq.inria.fr/distrib/V8.9.0/stdlib//Coq.Init.Logic.html#1c93e43e07fbeaeb6a625cb6614beb5d"><span class="id" title="notation">-&gt;</span></a> <a class="idref" href="GDTC.features.html#value_fix"><span class="id" title="inductive">value_fix</span></a>.<br/>
+<span class="id" title="keyword">Context</span> {<span class="id" title="var">ret_fix_value</span> : <a class="idref" href="header_extensible.html#retract"><span class="id" title="class">retract</span></a> (<a class="idref" href="GDTC.features.html#value_fix"><span class="id" title="inductive">value_fix</span></a>) <a class="idref" href="GDTC.features.html#Fix.V"><span class="id" title="variable">V</span></a>}.<br/>
+<span class="id" title="keyword">End</span> <a class="idref" href="GDTC.features.html#Fix"><span class="id" title="section">Fix</span></a>.<br/>
+</div>
+</div>
+<div id="footer">
+  Generated by <a href="http://coq.inria.fr/">coqdoc</a> and improved with <a href="https://github.com/tebbi/coqdocjs">CoqdocJS</a>
+</div>
+</div>
+</body>
+
+</html>
