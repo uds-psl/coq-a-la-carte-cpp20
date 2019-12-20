@@ -2,6 +2,8 @@
 
 This repository contains the accompanying Coq code for the above mentioned paper by Yannick Forster and Kathrin Stark, accepted for publication at CPP '20. The paper is avaiable [here](https://www.ps.uni-saarland.de/Publications/documents/ForsterStark_2020_Coq.pdf).
 
+Parts of the Coq code were created using [Autosubst 2](http://ps.uni-saarland.de/extras/autosubst2). The directory `metacoq` contains a development version of [MetaCoq](https://metacoq.github.io/metacoq/).
+
 ## Compilation
 
 Our development is tested under Coq 8.9.1 with the Equations package 1.2+8.9 (see below on how to install).
