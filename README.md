@@ -1,6 +1,6 @@
 # Coq à la Carte - A Practical Approach to Modular Syntax with Binders
 
-This repository contains the accompanying Coq code for the above mentioned paper by Yannick Forster and Kathrin Stark, accepted for publication at CPP '20.
+This repository contains the accompanying Coq code for the above mentioned paper by Yannick Forster and Kathrin Stark, accepted for publication at CPP '20. The paper is avaiable [here](https://www.ps.uni-saarland.de/Publications/documents/ForsterStark_2020_Coq.pdf).
 
 ## Compilation
 
